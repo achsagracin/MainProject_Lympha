@@ -6,8 +6,7 @@ from sklearn.metrics import accuracy_score
 import joblib
 
 # Load dataset
-df = pd.read_csv("water_potability.csv")  # Download from Kaggle and place in same folder
-
+df = pd.read_csv("water_potability.csv")  
 # Fill missing values
 df = df.fillna(df.mean())
 
