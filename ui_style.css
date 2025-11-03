@@ -23,8 +23,8 @@ html, body, [class*="st-"] {
 section[data-testid="stSidebar"] {
   background-color: #0f0f0f !important;
   border-right: 1px solid #2b2b2b;
-  min-width: 250px !important;
-  max-width: 270px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
   padding: 1.2rem 0.8rem;
 }
 
@@ -37,7 +37,7 @@ section[data-testid="stSidebar"] h2 {
 div[role="radiogroup"] {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
   margin-top: 20px;
 }
 
@@ -255,7 +255,7 @@ div[role="radiogroup"] label[data-testid="stRadioOption"]:has(input:checked) {
 .sidebar-menu {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 6000px;
   margin-top: 20px;
 }
 
@@ -292,7 +292,7 @@ div[role="radiogroup"] label[data-testid="stRadioOption"]:has(input:checked) {
   content: "Navigation";
   color: #888;
   font-size: 12px;
-  margin-left: 15px;
+  margin-left: 1px;
   margin-bottom: 5px;
   text-transform: uppercase;
   letter-spacing: 1px;
