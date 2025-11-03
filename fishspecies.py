@@ -48,7 +48,7 @@ def load_and_train_model():
     return scaler, mlb, trained_models, skipped_fish
 
 def fishspecies_streamlit():
-    st.title("🐟 Fish Survival Prediction")
+    st.title("🐟 Aquatic Habitability")
 
     scaler, mlb, trained_models, skipped_fish = load_and_train_model()
 
