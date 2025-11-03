@@ -1,0 +1,23 @@
+# Bytecode / cache
+__pycache__/
+*.py[cod]
+
+# Big artifacts
+*.pt
+*.pth
+*.pkl
+*.csv
+*.log
+*.tmp
+
+# Envs / local
+.venv/
+venv/
+.env
+.streamlit/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

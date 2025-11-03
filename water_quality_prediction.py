@@ -133,7 +133,7 @@ def runprediction_streamlit():
     X_t = qt.fit_transform(pt.fit_transform(X_scaled))
     model_gbr.fit(X_t, WQI_norm)
 
-    st.header("Water Quality Prediction")
+    st.header("🔍 Water Potability")
     uservals = []
     for col in df_clean.columns:
         val = st.number_input(f"Enter value for {col}", value=float(df_clean[col].mean()))
