@@ -3,6 +3,14 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+css_path = os.path.join(BASE_DIR, "ui_style.css")
+
+with open(css_path, "r", encoding="utf-8") as f:
+    css = f.read()
+
 
 # 1) Page config (must be first)
 st.set_page_config(page_title="LYMPHA", page_icon="💧", layout="wide")
@@ -11,6 +19,9 @@ st.set_page_config(page_title="LYMPHA", page_icon="💧", layout="wide")
 from water_quality_prediction import runprediction_streamlit
 from fishspecies import fishspecies_streamlit
 from forecasting.ts_forecasting_ui import ts_forecasting_streamlit
+from fishspecies import fishspecies_streamlit
+fishspecies_streamlit()
+
 
 # 3) Theme CSS
 with open("ui_style.css", "r", encoding="utf-8") as f:
