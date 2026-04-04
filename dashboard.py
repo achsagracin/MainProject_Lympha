@@ -4,12 +4,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+from serial_reader import read_sensor_data
+from typing import Optional
+import torch
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 css_path = os.path.join(BASE_DIR, "ui_style.css")
 
 with open(css_path, "r", encoding="utf-8") as f:
     css = f.read()
+
 
 
 # 1) Page config (must be first)
@@ -20,7 +24,6 @@ from water_quality_prediction import runprediction_streamlit
 from fishspecies import fishspecies_streamlit
 from forecasting.ts_forecasting_ui import ts_forecasting_streamlit
 from fishspecies import fishspecies_streamlit
-fishspecies_streamlit()
 
 
 # 3) Theme CSS
@@ -103,10 +106,13 @@ if section == "🏠 Dashboard":
 
     col1, col2 = st.columns([2, 1], gap="large")
     with col1:
-        st.markdown("<div class='panel'><h4>Recent Measurements</h4><p style='color:#9aa4b2'>Connect your source to render a table or charts here.</p></div>", unsafe_allow_html=True)
-    with col2:
-        st.markdown("<div class='panel'><h4>Alerts</h4><p style='color:#9aa4b2'>Add threshold-based alerts here.</p></div>", unsafe_allow_html=True)
+        sensor_data = read_sensor_data()
+        if sensor_data:
+            st.table(sensor_data)
+        else:
+            st.warning("No sensor data received. Check your connection and port.")
 
+    
 elif section == "🔍 Water Potability":
     runprediction_streamlit()
 
@@ -115,3 +121,4 @@ elif section == "🐟 Aquatic Habitability":
 
 elif section == "📈 Time-Series Forecasting":
     ts_forecasting_streamlit()
+    

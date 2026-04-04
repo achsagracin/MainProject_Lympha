@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+from typing import Optional
+import torch
 
 @dataclass
 class Config:
@@ -28,7 +30,7 @@ class Config:
     # single_node → variables become graph nodes for one station
     # all_pairs → (Node Id × variable) pairs become nodes
     long_option: str = "single_node"
-    node_id_filter: str | None = "1"      # Node Id to use in single_node mode
+    node_id_filter: Optional[str] = "1"      # Node Id to use in single_node mode
     resample_rule: str = "10min"            # exact 10-minute grid
     impute: str = "ffill_bfill"           # fill small gaps
 
@@ -64,3 +66,19 @@ class Config:
     dqn_eps_start: float = 0.2
     dqn_eps_end: float = 0.05
     dqn_eps_decay_steps: int = 1000
+
+def forward(self, O: torch.Tensor, A_static: torch.Tensor, A_rl: Optional[torch.Tensor] = None):
+    """
+    Forward pass of the model.
+    """
+    if A_rl is not None:
+        # If A_rl is provided, use it
+        A = A_rl
+    else:
+        # If A_rl is not provided, use A_static
+        A = A_static
+
+    # Forward pass
+    output = self.forward_pass(O, A)
+
+    return output

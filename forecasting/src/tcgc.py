@@ -27,7 +27,9 @@ class TCGCBlock(nn.Module):
         in_fuse = d_gcn * (3 if self.use_rl else 2)
         self.fuse = nn.Linear(in_fuse, d_fused)
 
-    def forward(self, O: torch.Tensor, A_static: torch.Tensor, A_rl: torch.Tensor | None = None):
+from typing import Optional
+
+def forward(self, O: torch.Tensor, A_static: torch.Tensor, A_rl: Optional[torch.Tensor] = None):
         """
         O:        (B, N, d_in)   node features from temporal encoder
         A_static: (N, N) or (B, N, N)  prior/static adjacency
